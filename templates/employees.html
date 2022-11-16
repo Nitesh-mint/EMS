@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <title>Document</title>
+    <style>
+        .styled-table{
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            min-width: 400px;
+            box-shadow:0 0 20px green;
+            margin-left: 250px;
+        }
+        .styled-table thead tr{
+            background-color: #009879;
+            color:#ffffff;
+            text-align: left;
+        }
+        .styled-table th,
+        .styled-table td {
+             padding: 15px 20px;
+        }
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+
+    </style>
+</head>
+<body style="font-family: Poppins;">
+    
+{% block content %}
+<h1 align="center" style="color:green;">Employees</h1>
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>NAME</th>
+            <th>ADDRESS</th>
+            <th>DOB</th>
+            <th>JOINED</th>
+            <th>POST</th>
+        </tr>
+    </thead>
+    {% for employee in object_list %}
+        <tr>    
+                <td>{{employee.Name}}</td>
+                <td>{{employee.address}}</td>
+                <td>{{employee.date_of_brith}}</td>
+                <td>{{employee.joined_date}}</td>
+                <td style="color:white" bgcolor="green">{{employee.get_Post_display}}</td>
+        </tr>
+        {% endfor %}
+</table>
+{% endblock content %}
+</body>
+</html>
